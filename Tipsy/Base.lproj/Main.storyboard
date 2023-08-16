@@ -127,12 +127,24 @@
                                             <constraint firstAttribute="trailing" secondItem="QDm-4I-R22" secondAttribute="trailing" constant="30" id="tPk-Tm-mVc"/>
                                         </constraints>
                                     </stackView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyY-Kk-kEn">
+                                        <rect key="frame" x="123" y="376.66666666666663" width="147" height="31.333333333333314"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="147" id="K5E-lp-xR0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.84362953900000004" green="0.97556561230000005" blue="0.92320168020000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="NtY-F4-RSD" firstAttribute="leading" secondItem="EOv-ot-7Fq" secondAttribute="leading" constant="20" id="3Na-jg-YoM"/>
                                     <constraint firstItem="NtY-F4-RSD" firstAttribute="top" secondItem="EOv-ot-7Fq" secondAttribute="top" constant="20" id="BDT-pf-BlM"/>
                                     <constraint firstAttribute="trailing" secondItem="NtY-F4-RSD" secondAttribute="trailing" constant="20" id="KbR-NJ-DEv"/>
+                                    <constraint firstItem="HyY-Kk-kEn" firstAttribute="centerX" secondItem="EOv-ot-7Fq" secondAttribute="centerX" id="M4G-1L-KcQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="HyY-Kk-kEn" secondAttribute="bottom" constant="231" id="Y4I-Qg-I0E"/>
+                                    <constraint firstItem="HyY-Kk-kEn" firstAttribute="leading" secondItem="EOv-ot-7Fq" secondAttribute="leading" constant="123" id="jqo-Zm-UKO"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="C9X-5R-fQ6">
@@ -200,22 +212,24 @@
                     </view>
                     <connections>
                         <outlet property="billTextField" destination="wcN-ka-Q4F" id="N2x-xG-SrK"/>
+                        <outlet property="labelNoValue" destination="HyY-Kk-kEn" id="2Dm-NR-xCO"/>
                         <outlet property="splitNumberLabel" destination="bSy-Yc-886" id="t64-Gw-mAe"/>
                         <outlet property="tenPctButton" destination="7y6-Kf-yF0" id="06X-LY-Goy"/>
                         <outlet property="twentyPctButton" destination="UtR-dU-EKt" id="gbe-JJ-DLe"/>
                         <outlet property="zeroPctButton" destination="XzR-0E-Xf7" id="edQ-8v-KZE"/>
+                        <segue destination="Dnf-m2-FPm" kind="presentation" identifier="goToResults" id="iSS-4s-xBj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
+            <point key="canvasLocation" x="135.1145038167939" y="117.60563380281691"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="bJV-Cc-sXH">
             <objects>
-                <viewController id="Dnf-m2-FPm" sceneMemberID="viewController">
+                <viewController id="Dnf-m2-FPm" customClass="ResultViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DNW-gk-FsX">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCe-Te-efL">
@@ -252,7 +266,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzn-9K-6hu">
-                                <rect key="frame" x="96.666666666666686" y="764" width="200" height="54"/>
+                                <rect key="frame" x="96.666666666666686" y="788" width="200" height="54"/>
                                 <color key="backgroundColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="0Lh-eY-3GO"/>
@@ -265,6 +279,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10f"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="recalculatePressed:" destination="Dnf-m2-FPm" eventType="touchUpInside" id="Yzf-ic-oWc"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Split between 2 people, with 10% tip." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGt-bn-sCv">
                                 <rect key="frame" x="50" y="305" width="293" height="117"/>
@@ -289,6 +306,10 @@
                             <constraint firstItem="ZCe-Te-efL" firstAttribute="top" secondItem="DNW-gk-FsX" secondAttribute="top" id="zdY-59-9ry"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="settingsLabel" destination="HGt-bn-sCv" id="kIV-Qb-KBg"/>
+                        <outlet property="totalLabel" destination="uLJ-ii-hft" id="pjr-Ef-wPa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLi-Eb-NGd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
